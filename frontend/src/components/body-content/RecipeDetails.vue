@@ -15,15 +15,15 @@ import { ref, watch } from 'vue'
 
 const props = defineProps(['recipeId']);
 
-const title = ref('Recipe Name');
-const body = ref('Content');
+const title = ref('Recipe');
+const body = ref('');
 
 watch(() => props.recipeId, () => {
   loadRecipe(props.recipeId);
 });
 
 const loadRecipe = (id) => {
-  title.value = id;
+  body.value = id;
 }
 
 loadRecipe(props.recipeId);
