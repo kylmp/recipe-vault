@@ -1,0 +1,29 @@
+{
+  "author": "klymp",
+  "license": "AGPL-3.0-only",
+  "name": "recpie-vault",
+  "version": "0.0.1",
+  "description": "Manage, import, and view home recpies",
+  "private": true,
+  "scripts": {
+    "start": "npm run --prefix ./backend start",
+    "install-backend": "npm --prefix ./backend install ./backend",
+    "build-frontend": "npm run --prefix ./frontend build",
+    "install-frontend": "npm --prefix ./frontend install ./frontend",
+    "serve-frontend": "npm run --prefix ./frontend serve",
+    "build": "releases/build.sh"
+  },
+  "pkg": {
+    "targets": [
+      "node18-linux-x64",
+      "node18-linux-arm64",
+      "node18-macos-x64",
+      "node18-macos-arm64"
+    ],
+    "assets": [
+      "./public/**/*",
+      "./backend/src/**/*"
+    ],
+    "outputPath": "./releases/"
+  }
+}
