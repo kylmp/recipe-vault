@@ -8,7 +8,6 @@
     variant="outlined"
     @keydown.enter.prevent="loadRecpie">
   </v-text-field>
-  <v-btn @click="loadRecpie">Fetch</v-btn>
 </template>
 
 <script setup>

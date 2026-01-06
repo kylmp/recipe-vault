@@ -1,5 +1,10 @@
 <template>
-  <v-navigation-drawer color="sidenav" :width="300" permanent>
+  <v-navigation-drawer
+    v-model="drawerOpen"
+    color="sidenav"
+    :width="300"
+    :temporary="isMobile"
+    :permanent="!isMobile">
     <v-list density="compact" height="100%" v-model:selected="selection" class="sidenav-list">
       <v-sheet class="sidenav-list-header">
         <v-sheet v-if="loggedIn">
@@ -17,13 +22,24 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useDisplay } from 'vuetify';
 import SideNavUserInfo from './sidenav-content/SideNavUserInfo.vue';
 import SideNavButton from './sidenav-content/SideNavButton.vue';
 import SideNavCollapsableList from './sidenav-content/SideNavCollapsableList.vue';
+import { useUiStore } from '../stores/uiStore';
 
 const selection = ref([]);
 const loggedIn = ref(true);
+const uiStore = useUiStore();
+const { drawerOpen } = storeToRefs(uiStore);
+const { mobile } = useDisplay();
+const isMobile = mobile;
+
+watch(isMobile, (value) => {
+  uiStore.setDrawerOpen(!value);
+}, { immediate: true });
 const recents = ref([
   {name: "Cinnamon Rolls", id: "recipe-1"},
   {name: "Blueberry Yogurt", id: "recipe-2"},
