@@ -1,12 +1,12 @@
 <template>
   <v-main>
-    <recipe-details :recipeId="searchResultId"/>
+    <details-display :recipeId="searchResultId"/>
   </v-main>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import RecipeDetails from './body-content/RecipeDetails.vue';
+import DetailsDisplay from './body-content/DetailsDisplay.vue';
 import { useSearchStore } from '../stores/searchStore';
 
 const searchStore = useSearchStore();

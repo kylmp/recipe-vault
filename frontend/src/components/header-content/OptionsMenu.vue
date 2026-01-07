@@ -61,7 +61,7 @@ const toggleTheme = () => {
 
 // Map for building options menu, <key, { display text, click function, default state }>
 const options = ref(new Map([
-  ['theme', {label: "Dark mode", click: toggleTheme, state: true}],
+  ['theme', {label: "Dark Theme", click: toggleTheme, state: true}],
 ]));
 
 // Set theme state from local storage

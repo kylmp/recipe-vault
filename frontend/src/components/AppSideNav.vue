@@ -1,19 +1,7 @@
 <template>
-  <v-navigation-drawer
-    v-model="drawerOpen"
-    color="sidenav"
-    :width="300"
-    :temporary="isMobile"
-    :permanent="!isMobile">
+  <v-navigation-drawer v-model="drawerOpen" color="sidenav" :width="300" :temporary="isMobile" :permanent="!isMobile">
     <v-list density="compact" height="100%" v-model:selected="selection" class="sidenav-list">
-      <v-sheet class="sidenav-list-header">
-        <v-sheet v-if="loggedIn">
-          <side-nav-user-info/>
-          <v-divider/>
-          <side-nav-button label="New Recipe" icon="mdi-plus"/>
-        </v-sheet>
-        <side-nav-button v-else label="Login to create" icon="mdi-plus"/>
-      </v-sheet>
+      <side-nav-header/>
       <side-nav-collapsable-list label="Recently Viewed" icon="mdi-chef-hat" :items="recents"/>
       <side-nav-collapsable-list label="Favorites" icon="mdi-heart" :items="favorites"/>
       <side-nav-collapsable-list label="Categories" icon="mdi-shape" :items="categories"/>
@@ -25,21 +13,16 @@
 import { ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useDisplay } from 'vuetify';
-import SideNavUserInfo from './sidenav-content/SideNavUserInfo.vue';
-import SideNavButton from './sidenav-content/SideNavButton.vue';
+import SideNavHeader from './sidenav-content/SideNavHeader.vue';
 import SideNavCollapsableList from './sidenav-content/SideNavCollapsableList.vue';
 import { useUiStore } from '../stores/uiStore';
 
 const selection = ref([]);
-const loggedIn = ref(true);
 const uiStore = useUiStore();
 const { drawerOpen } = storeToRefs(uiStore);
 const { mobile } = useDisplay();
 const isMobile = mobile;
 
-watch(isMobile, (value) => {
-  uiStore.setDrawerOpen(!value);
-}, { immediate: true });
 const recents = ref([
   {name: "Cinnamon Rolls", id: "recipe-1"},
   {name: "Blueberry Yogurt", id: "recipe-2"},
@@ -53,6 +36,10 @@ const categories = ref([
   {name: "Dessert", id: "category-1"},
   {name: "Pizza", id: "category-2"}
 ]);
+
+watch(isMobile, (value) => {
+  uiStore.setDrawerOpen(!value);
+}, { immediate: true });
 </script>
 
 <style scoped>
