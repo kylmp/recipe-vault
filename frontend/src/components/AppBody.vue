@@ -1,19 +1,16 @@
 <template>
   <v-main>
-    <details-display :recipeId="searchResultId"/>
+    <details-display v-if="recipeId !== undefined" :recipeId="recipeId"/>
+    <recipes-display v-else/>
   </v-main>
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import DetailsDisplay from './body-content/DetailsDisplay.vue';
-import { useSearchStore } from '../stores/searchStore';
+import RecipesDisplay from './body-content/RecipesDisplay.vue';
 
-const searchStore = useSearchStore();
-const searchResultId = ref('nothing');
-
-// When recipe search updates, load recipe page
-searchStore.$subscribe((mutation, state) => {
-  searchResultId.value = state.searchString;
+const { recipeId } = defineProps({
+  recipeId: String, 
+  default: undefined
 });
 </script>

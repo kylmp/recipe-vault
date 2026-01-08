@@ -2,7 +2,7 @@
   <v-app>
     <app-header/>
     <app-side-nav/>
-    <app-body/>
+    <router-view/>
     <global-alert ref="alert"/>
   </v-app>
 </template>
@@ -10,7 +10,6 @@
 <script setup>
 import { ref, onMounted, inject } from 'vue';
 import AppHeader from './components/AppHeader.vue';
-import AppBody from './components/AppBody.vue';
 import AppSideNav from './components/AppSideNav.vue';
 import GlobalAlert from './components/global-components/Alert.vue';
 import { useAlertStore } from './stores/alertStore';

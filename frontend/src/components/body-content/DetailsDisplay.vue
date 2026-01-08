@@ -1,11 +1,21 @@
 <template>
-  <v-container fill-height fluid>
+  <!-- <v-container fill-height fluid>
     <v-row justify="center" align="center" class="text-center">
         <div>
           <span class="text-h6">{{title}}</span>
           <br>
           <span class="text-body-1">{{body}}</span>
         </div>
+    </v-row>
+  </v-container> -->
+  <v-container>
+    <v-row class="pt-4 fill-height" justify="center">
+      <v-col class="pr-0 mr-0">
+        details
+      </v-col>
+      <v-col>
+        image
+      </v-col>
     </v-row>
   </v-container>
 </template>

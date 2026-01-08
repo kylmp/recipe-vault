@@ -4,6 +4,7 @@
       <side-nav-header/>
       <side-nav-collapsable-list label="Recently Viewed" icon="mdi-chef-hat" :items="recents"/>
       <side-nav-collapsable-list label="Favorites" icon="mdi-heart" :items="favorites"/>
+      <side-nav-collapsable-list label="Lists" icon="mdi-list-box-outline" :items="lists"/>
       <side-nav-collapsable-list label="Categories" icon="mdi-shape" :items="categories"/>
     </v-list>
   </v-navigation-drawer>
@@ -24,17 +25,21 @@ const { mobile } = useDisplay();
 const isMobile = mobile;
 
 const recents = ref([
-  {name: "Cinnamon Rolls", id: "recipe-1"},
-  {name: "Blueberry Yogurt", id: "recipe-2"},
-  {name: "Gumbo", id: "recipe-3"}
+  {name: "Cinnamon Rolls", id: "recipe-1", route: `/recipe/1-cinnamon-rolls`},
+  {name: "Blueberry Yogurt", id: "recipe-2", route: `/recipe/2-blueberry-yogurt`},
+  {name: "Gumbo", id: "recipe-3", route: `/recipe/3-gumbo`}
 ]);
 const favorites = ref([
-  {name: "Pineapple Pizza", id: "recipe-4"},
-  {name: "Tom Yum Soup", id: "recipe-5"}
+  {name: "Pineapple Pizza", id: "recipe-4", route: `/recipe/4-pineapple-pizza`},
+  {name: "Tom Yum Soup", id: "recipe-5", route: `/recipe/5-tom-yum-soup`}
 ]);
 const categories = ref([
-  {name: "Dessert", id: "category-1"},
-  {name: "Pizza", id: "category-2"}
+  {name: "Dessert", id: "category-1", route: `/?categories=test1,test2&tags=test1`},
+  {name: "Pizza", id: "category-2", route: `/?categories=test3`}
+]);
+const lists = ref([
+  {name: "Home", id: "category-3", route: `/?lists=home`},
+  {name: "Outside", id: "category-4", route: `/?lists=outside`}
 ]);
 
 watch(isMobile, (value) => {

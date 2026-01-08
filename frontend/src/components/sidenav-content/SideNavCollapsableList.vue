@@ -22,7 +22,7 @@
         min-height="32"
         class="sidenav-collapsible__item"
         :color="color"
-        @click="handleItemClick(item)">
+        @click="router.push(item.route)">
         <template #prepend>
           <v-icon size="18">{{ icon }}</v-icon>
         </template>
@@ -33,6 +33,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 defineProps({
   label: {
@@ -53,16 +54,11 @@ defineProps({
   },
 });
 
-const isOpen = ref(true);
+const router = useRouter();
 
+const isOpen = ref(true);
 const toggleOpen = () => {
   isOpen.value = !isOpen.value;
-};
-
-const emit = defineEmits(['item-click']);
-
-const handleItemClick = (item) => {
-  emit('item-click', item);
 };
 </script>
 
