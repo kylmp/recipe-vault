@@ -5,19 +5,11 @@
     label="Search Recipes" 
     placeholder="Search..." 
     v-model="searchStr"
-    variant="outlined"
-    @keydown.enter.prevent="loadRecpie">
+    variant="outlined">
   </v-text-field>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
-import { useSearchStore } from '../../stores/searchStore';
-
-const searchStore = useSearchStore();
 const searchStr = ref('');
-
-const loadRecpie = () => {
-  searchStore.update(searchStr.value);
-}
 </script>

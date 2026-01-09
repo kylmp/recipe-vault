@@ -9,12 +9,12 @@
         <span class="text-h6 pl-4">{{ name }}</span>
       </v-btn>
     </v-app-bar-title>
-    <recipe-search v-if="!isMobile" />
+    <recipe-search v-if="!isMobile"/>
     <options-menu/>
   </v-app-bar>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useDisplay } from 'vuetify';
 import { useRouter } from 'vue-router';

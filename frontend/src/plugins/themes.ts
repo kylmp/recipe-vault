@@ -1,4 +1,6 @@
-export const lightTheme = {
+import { ThemeDefinition } from "vuetify"
+
+export const lightTheme: ThemeDefinition = {
   colors: {
     background: '#FAFAFA',
     surface: '#FAFAFA',
@@ -13,7 +15,7 @@ export const lightTheme = {
   }
 }
 
-export const darkTheme = {
+export const darkTheme: ThemeDefinition = {
   dark: true,
   colors: {
     background: '#0e0e10',

@@ -85,7 +85,7 @@
   </v-sheet>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useDisplay } from 'vuetify'
 const filterString = ref('');

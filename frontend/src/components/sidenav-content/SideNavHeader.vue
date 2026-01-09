@@ -9,7 +9,7 @@
   </v-sheet>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import SideNavUserInfo from './SideNavUserInfo.vue'
 import SideNavButton from './SideNavButton.vue';

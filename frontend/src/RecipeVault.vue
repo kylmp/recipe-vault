@@ -7,7 +7,7 @@
   </v-app>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, inject } from 'vue';
 import AppHeader from './components/AppHeader.vue';
 import AppSideNav from './components/AppSideNav.vue';
@@ -18,7 +18,7 @@ import { useSettingsStore } from './stores/settingsStore';
 const axios = inject('axios');
 const settingsStore = useSettingsStore();
 const alertStore = useAlertStore();
-const alert = ref(null);
+const alert = ref<InstanceType<typeof GlobalAlert> | null>(null);
 
 // axios.get('/api/settings').then(res => {
 //   settingsStore.update(res.data);

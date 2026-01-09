@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 export const useOptionsStore = defineStore('optionsStore', () => {
   const darkTheme = ref(false);
   
-  const setDarkTheme = (theme) => {
+  const setDarkTheme = (theme: boolean) => {
     darkTheme.value = theme;
   }
   

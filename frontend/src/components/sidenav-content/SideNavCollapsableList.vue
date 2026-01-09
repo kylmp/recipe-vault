@@ -24,16 +24,18 @@
         :color="color"
         @click="router.push(item.route)">
         <template #prepend>
-          <v-icon size="18">{{ icon }}</v-icon>
+          <v-icon size="18">{{ item.icon }}</v-icon>
         </template>
       </v-list-item>
     </div>
   </v-expand-transition>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
+import type { PropType } from 'vue';
 import { useRouter } from 'vue-router';
+import type { SideNavItem } from '../../../../common/types';
 
 defineProps({
   label: {
@@ -44,12 +46,8 @@ defineProps({
     type: String,
     default: 'highlight-text',
   },
-  icon: {
-    type: String,
-    default: undefined,
-  },
   items: {
-    type: Array,
+    type: Array as PropType<SideNavItem[]>,
     required: true,
   },
 });

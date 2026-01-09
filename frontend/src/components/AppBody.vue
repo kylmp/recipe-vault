@@ -5,7 +5,7 @@
   </v-main>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import DetailsDisplay from './body-content/DetailsDisplay.vue';
 import RecipesDisplay from './body-content/RecipesDisplay.vue';
 

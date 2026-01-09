@@ -4,8 +4,9 @@
   </v-snackbar>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
+import type { AlertPayload } from '../../../../common/types';
 
 const defaultColor = 'primary';
 const defaultTimeout = 3000;
@@ -16,16 +17,16 @@ const message = ref(defaultMessage);
 const color = ref(defaultColor);
 const timeout = ref(defaultTimeout);
 
-const send = (data) => {
+const send = (data: AlertPayload) => {
   const selectedColor = (typeof data === "string") ? defaultColor : data.color;
   showAlert(data, selectedColor || defaultColor);
 }
 
-const success = (data) => {
+const success = (data: AlertPayload) => {
   showAlert(data, 'success');
 }
 
-const error = (data) => {
+const error = (data: AlertPayload) => {
   showAlert(data, 'error');
 }
 
@@ -33,7 +34,7 @@ const clear = () => {
   showSnackbar.value = false;
 }
 
-const showAlert = (data, selectedColor) => {
+const showAlert = (data: AlertPayload, selectedColor: string) => {
   clear();
   if (typeof data === "string") {
     message.value = data;

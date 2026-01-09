@@ -20,10 +20,10 @@
   </v-container>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, watch } from 'vue'
 
-const props = defineProps(['recipeId']);
+const props = defineProps<{ recipeId?: string }>();
 
 const title = ref('Recipe');
 const body = ref('');
@@ -32,8 +32,8 @@ watch(() => props.recipeId, () => {
   loadRecipe(props.recipeId);
 });
 
-const loadRecipe = (id) => {
-  body.value = id;
+const loadRecipe = (id?: string) => {
+  body.value = id ?? '';
 }
 
 loadRecipe(props.recipeId);

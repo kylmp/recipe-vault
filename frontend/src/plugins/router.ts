@@ -1,7 +1,7 @@
-import { createWebHistory } from 'vue-router'
+import { createWebHistory, RouteRecordRaw, RouterOptions } from 'vue-router'
 import AppBody from '../components/AppBody.vue';
 
-const routes = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'recipes list',
@@ -15,12 +15,12 @@ const routes = [
     name: 'recipe details',
     component: AppBody,
     props: route => ({
-      recipeId: route.params.id
+      recipeId: String(route.params.id)
     }),
   },
 ]
 
-export const routerConfig = {
+export const routerConfig: RouterOptions = {
   history: createWebHistory(),
   routes,
 };

@@ -25,7 +25,7 @@
   </v-menu>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { useTheme } from 'vuetify'
 import { useOptionsStore } from '../../stores/optionsStore';
@@ -42,7 +42,7 @@ var closeMenuTimeout;
 
 // Clear any alert when menu is opened (having both open causes a bug)
 const optionsButtonClicked = () => {
-  alertStore.alert.clear()
+  alertStore.alert?.clear()
 }
 
 // 500ms delay before closing options menu if cursor leaves the menu (cancelled if cursor enters again)

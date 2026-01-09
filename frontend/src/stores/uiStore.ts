@@ -2,9 +2,9 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useUiStore = defineStore('uiStore', () => {
-  const drawerOpen = ref(true);
+  const drawerOpen = ref<boolean>(true);
 
-  const setDrawerOpen = (value) => {
+  const setDrawerOpen = (value: boolean) => {
     drawerOpen.value = value;
   };
 

@@ -11,7 +11,7 @@
   </v-list-item>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 const userImage = ref('');
 </script>
